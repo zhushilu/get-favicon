@@ -13,6 +13,21 @@ app.config.from_object(config)
 favicon_server='https://favicon.zhusl.com/?url='
 #favicon_server='http://www.google.com/s2/favicons?domain='
 
+pattern = re.compile(
+    r'^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|'
+    r'([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|'
+    r'([a-zA-Z0-9][-_.a-zA-Z0-9]{0,61}[a-zA-Z0-9]))\.'
+    r'([a-zA-Z]{2,13}|[a-zA-Z0-9-]{2,30}.[a-zA-Z]{2,3})$'
+)
+
+def is_valid_domain(value):
+    """
+    Return whether or not given value is a valid domain.
+    If the value is valid domain name this function returns ``True``, otherwise False
+    :param value: domain string to validate
+    """
+    return True if pattern.match(value) else False
+
 # 移除字符串开头的多个字符
 def strip2(s, chars):
     re_chars = re.escape(chars)
@@ -64,6 +79,8 @@ def get_favicon():
     z = strip2(y,'https://')
     url_strip = z.split('/')[0]
     print(url_strip)
+    if not is_valid_domain(url_strip) :
+        return 'vaild url',203
     if os.path.exists('./static/'+url_strip+'.ico'):
         print('ico is exist')
         with open('./static/'+url_strip+'.ico','rb') as f:
