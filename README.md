@@ -1,6 +1,12 @@
 # 获取网站ico文件
 
+
+
 借助google的api，实现在国内获取ico文件，主要是个人使用的一款开源网页书签系统中会对每个书签自动添加ico图表，google的国内无法使用，国内的其他ico获取服务又不稳定，所以用python简单的实现了一个。
+
+## 查看获取历史
+https://favicon.zhusl.com/icolist
+![-w659](https://st.zhusl.com/images/getfavicon.png)
 
 ## 使用方式
 
