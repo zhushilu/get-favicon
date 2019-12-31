@@ -1,0 +1,151 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <title>Favicon.ico获取API</title>
+    <style>
+    * {margin:0;padding:0;font-size:14px;font-family:'Microsoft Yahei','微软雅黑',Tahoma,Arial,Helvetica,STHeiti;}
+
+    a,img {border:0;}
+
+    a {color:#666;text-decoration:none;word-wrap: break-word;word-break: normal;}
+    a:hover {text-decoration: underline;color: #03B3B2;}
+
+    .container{
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 0 5px;
+    }
+    .container p{
+        color: #444;
+        margin-bottom: 5px;
+    }
+    .container ul{
+        margin-bottom: 5px;
+        padding-left: 25px;
+    }
+    .container ul li{
+        color: #444;
+        margin-bottom: 3px;
+    }
+    .container h1{
+        color: #45B6F7;
+        font-size: 25px;
+        font-weight: 400;
+        margin: 20px 0;
+    }
+    .container h2{
+        font-size: 18px;
+        font-weight: 400;
+        margin: 20px 0 15px 0;
+    }
+    /*演示图标*/
+    .demo{
+        display: inline-block;
+        list-style:none;
+    }
+    .demo li {
+        float: left;
+        width: 146px;
+        overflow: hidden;
+        text-align: left;
+    }
+    .demo li a {
+        font-size: 14px;
+        width: 146px;
+        height: 38px;
+        line-height: 38px;
+        display: block;
+        padding-left: 0px;
+        margin-left: 10px;
+    }
+    .demo li a img {
+        width: 16px;
+        height: 16px;
+        float: left;
+        padding-top: 10px;
+    }
+    .demo li a em {
+        float:left;
+        font-style:normal;
+        font-size:14px;
+        padding-left:4px;
+    }
+    .demo li a em:hover {
+        text-decoration: underline;
+    }
+
+    /*代码调用*/
+    .codes{
+        margin:15px 0;
+        padding:10px 12px;
+        border:#ccc 1px solid;
+        border-left-width:4px;
+        background-color:#fefefe;
+        box-shadow:0 0 4px #eee;
+        word-break:break-all;
+        word-wrap:break-word;
+        color:#444;
+        max-width: 900px;
+        overflow-x: auto;
+    }
+    /*底部版权链接*/
+    .copyright{
+        color:#666;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 30px;
+    }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Favicon.ico获取API</h1>
+
+    <h2>API说明：</h2>
+    <p>远程实时获取并显示网站的Favicon.ico文件。</p>
+
+    <h2>已缓存 ico 列表：</h2>
+
+    <ul class="demo">
+
+  {% for key, value in ico_dict.items() %}
+
+    <li>
+        <a href="http://{{ key }}" target="_blank">
+            <img src="./static/{{ value }}" width="26" height="16">
+            <em>{{ key }}</em>
+        </a>
+    </li>
+
+   {% endfor %}
+
+    </ul>
+
+    <h2>API调用方式：</h2>
+
+<pre class="codes">
+<span style="color:#170">&lt;img</span> <span style="color:#00c">src</span>=<span style="color:#a11">"/ico?url=XXXXX"</span><span style="color:#170">&gt;</span><br><br>
+//XXXXX部分为需要获取的目标网站网址 例如ico?url=www.baidu.com<br>
+网址前面的http://可以加，也可以不加。
+</pre>
+
+    <div class="copyright">
+        <p>Copyright &copy; 2019 <a href="https://zhusl.com" target="_blank">zhusl.com</a></p>
+    </div>
+
+</div>  <!--class=container-->
+
+<a href="https://github.com/zhushilu/get-favicon">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png">
+</a>
+
+</body>
+</html>

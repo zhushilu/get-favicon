@@ -5,6 +5,8 @@ import os
 import re
 import config
 
+from flask import render_template
+
 app = Flask(__name__)
 app.config.from_object(config)
 
@@ -23,9 +25,26 @@ def get_url(url):
     data = response.content
     return data
 
+def static_list():
+    ico_dir = {}
+    list_dir = os.listdir('static')
+    for  i in list_dir:
+        if i[-3:] == 'ico':
+            ico_dir[i[0:-4]] = i
+    return ico_dir
+
+
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+@app.route('/icolist')
+def ico_list():
+    ico_dict = static_list()
+    print(ico_dict)
+    return render_template('index.html',ico_dict = ico_dict)
+    #return str(ico_dict)
+
 
 ## 获取网站favicon的api，请求方式（百度：'http://xxxx:xx/favicon/baidu.com'）
 @app.route('/favicon/<url>', methods=['GET'])
